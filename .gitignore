@@ -1,0 +1,9 @@
+# Gradle
+.gradle
+build/
+
+### macOS template
+*.DS_Store
+
+# Intellij
+.idea/
