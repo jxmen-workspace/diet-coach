@@ -1,38 +1,56 @@
 plugins {
-	kotlin("jvm") version "1.9.25"
-	kotlin("plugin.spring") version "1.9.25"
-	id("org.springframework.boot") version "3.5.0"
-	id("io.spring.dependency-management") version "1.1.7"
+    kotlin("jvm") version "1.9.25"
+    kotlin("plugin.spring") version "1.9.25"
+    id("org.springframework.boot") version "3.5.0"
+    id("io.spring.dependency-management") version "1.1.7"
 }
 
 group = "dev.jxmen"
 version = "0.0.1-SNAPSHOT"
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+
+    // for Spring AI. See: https://docs.spring.io/spring-ai/reference/getting-started.html#artifact-repositories
+    maven { url = uri("https://repo.spring.io/milestone") }
+    maven { url = uri("https://repo.spring.io/snapshot") }
+    maven {
+        name = "Central Portal Snapshots"
+        url = uri("https://central.sonatype.com/repository/maven-snapshots/")
+    }
+
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    // Kotlin
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+    // Spring Boot
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
+    // Spring AI
+    implementation(platform("org.springframework.ai:spring-ai-bom:1.0.0-SNAPSHOT"))
+    implementation("org.springframework.ai:spring-ai-openai") // 사용하려는 것으로 의존성 교체 필요
+
+    // for testing
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 kotlin {
-	compilerOptions {
-		freeCompilerArgs.addAll("-Xjsr305=strict")
-	}
+    compilerOptions {
+        freeCompilerArgs.addAll("-Xjsr305=strict")
+    }
 }
 
 tasks.withType<Test> {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
