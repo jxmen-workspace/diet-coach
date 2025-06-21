@@ -8,5 +8,5 @@ enum class ErrorType(val status: HttpStatus, val code: ErrorCode, val message: S
 
     // I: Image 관련 에러
     REQUIRED_IMAGE_MISSING(HttpStatus.BAD_REQUEST, ErrorCode.I001, "이미지는 반드시 있어야 합니다.", LogLevel.WARN),
-    UNSUPPORTED_IMAGE_TYPE(HttpStatus.BAD_REQUEST, ErrorCode.I002, "허용되지 않은 이미지 형식입니다.", LogLevel.WARN),
+    UNSUPPORTED_IMAGE_TYPE(HttpStatus.BAD_REQUEST, ErrorCode.I002, "지원하지 않는 이미지 형식입니다.", LogLevel.WARN),
 }

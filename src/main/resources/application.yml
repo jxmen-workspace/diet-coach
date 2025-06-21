@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: diet-coach
+
+  servlet:
+    multipart:
+      max-file-size: 3MB
+
+  # 콘솔 색상 설정
+  output:
+    ansi:
+      enabled: always
+
+  profiles:
+    active: dev
