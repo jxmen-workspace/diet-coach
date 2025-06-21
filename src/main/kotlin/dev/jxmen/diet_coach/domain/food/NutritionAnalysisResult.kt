@@ -1,6 +1,9 @@
-package dev.jxmen.diet_coach.infrastructure.rest.analyze.dto
+package dev.jxmen.diet_coach.domain.food
 
-data class AnalyzeResponse(
+/**
+ * 성분 분석 결과
+ */
+data class NutritionAnalysisResult(
     val calories: Double,
 
     /**
@@ -16,6 +19,5 @@ data class AnalyzeResponse(
     /**
      * 지방
      */
-    val fat: Double // 지방
+    val fat: Double
 )
-

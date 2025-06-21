@@ -7,3 +7,5 @@ build/
 
 # Intellij
 .idea/
+
+my.secrets

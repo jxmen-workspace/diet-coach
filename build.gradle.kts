@@ -37,7 +37,8 @@ dependencies {
 
     // Spring AI
     implementation(platform("org.springframework.ai:spring-ai-bom:1.0.0-SNAPSHOT"))
-    implementation("org.springframework.ai:spring-ai-openai") // 사용하려는 것으로 의존성 교체 필요
+    implementation("org.springframework.ai:spring-ai-openai")
+    implementation("org.springframework.ai:spring-ai-starter-model-openai")
 
     // for testing
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
