@@ -6,7 +6,23 @@ plugins {
 }
 
 group = "dev.jxmen"
-version = "0.0.1-SNAPSHOT"
+version = "0.1.0"
+
+tasks.register("generateVersionProperties") {
+    // NOTE: git에 태그 추가 시 편하게 하기 위해 사용
+    group = "custom"
+    description = "Generate a version properties file"
+
+    doLast {
+        // 프로젝트 루트 디렉토리에 version.txt 파일 생성
+        project.rootProject.file("version.txt").writeText(project.version.toString())
+    }
+}
+
+// jar 파일을 만들기 전에 version.properties 파일 생성
+tasks.bootJar {
+    dependsOn("generateVersionProperties")
+}
 
 java {
     toolchain {

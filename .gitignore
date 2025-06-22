@@ -8,4 +8,8 @@ build/
 # Intellij
 .idea/
 
+# secert files
 my.secrets
+
+# version file
+version.txt
