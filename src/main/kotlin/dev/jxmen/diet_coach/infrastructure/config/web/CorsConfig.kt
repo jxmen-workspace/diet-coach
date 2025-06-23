@@ -9,9 +9,11 @@ class CorsConfig : WebMvcConfigurer {
 
     override fun addCorsMappings(registry: CorsRegistry) {
         registry.addMapping("/api/**")
-            .allowedOrigins(
+            .allowedOriginPatterns(
                 "http://localhost:3000",
-                "https://diet-coach.vercel.app"
+                "https://diet-coach.vercel.app",
+                "https://diet-coach-*.vercel.app",
+                "https://diet-coach-web-git-fork-jxmen-*.vercel.app"
             )
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
             .allowedHeaders("*")
