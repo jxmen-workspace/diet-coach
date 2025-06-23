@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "dev.jxmen"
-version = "0.1.0"
+version = "0.1.1"
 
 tasks.register("generateVersionProperties") {
     // NOTE: git에 태그 추가 시 편하게 하기 위해 사용
