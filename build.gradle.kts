@@ -36,6 +36,10 @@ tasks.bootJar {
     dependsOn("writeVersion")
 }
 
+tasks.bootBuildImage {
+    imageName = "${project.name}:${project.version}"
+}
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
