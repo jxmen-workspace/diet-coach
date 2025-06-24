@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     kotlin("jvm") version "1.9.25"
     kotlin("plugin.spring") version "1.9.25"
@@ -8,20 +10,30 @@ plugins {
 group = "dev.jxmen"
 version = "0.1.2"
 
-tasks.register("generateVersionProperties") {
-    // NOTE: git에 태그 추가 시 편하게 하기 위해 사용
+tasks.register("writeVersion") {
+    // NOTE: git에 태그 추가, API로 버전 확인 시에 사용
     group = "custom"
     description = "Generate a version properties file"
 
     doLast {
-        // 프로젝트 루트 디렉토리에 version.txt 파일 생성
-        project.rootProject.file("version.txt").writeText(project.version.toString())
+        val resourcesDir = project.layout.projectDirectory.dir("src/main/resources")
+        val versionPropertiesFile = resourcesDir.file("version.properties").asFile
+
+        // resources 디렉토리가 없다면 생성
+        versionPropertiesFile.parentFile.mkdirs()
+
+        val properties = Properties()
+        properties.setProperty("version", project.version.toString())
+
+        versionPropertiesFile.writer().use { writer ->
+            properties.store(writer, "Application Version")
+        }
     }
 }
 
-// jar 파일을 만들기 전에 version.properties 파일 생성
 tasks.bootJar {
-    dependsOn("generateVersionProperties")
+    // jar 파일을 만들기 전에 파일 생성
+    dependsOn("writeVersion")
 }
 
 java {
