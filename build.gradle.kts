@@ -31,8 +31,7 @@ tasks.register("writeVersion") {
     }
 }
 
-tasks.bootJar {
-    // jar 파일을 만들기 전에 파일 생성
+tasks.named("processResources") {
     dependsOn("writeVersion")
 }
 
