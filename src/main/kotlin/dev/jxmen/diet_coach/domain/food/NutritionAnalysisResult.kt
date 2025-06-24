@@ -19,5 +19,7 @@ data class NutritionAnalysisResult(
     /**
      * 지방
      */
-    val fat: Double
+    val fat: Double,
+
+    val foodItems: FoodItems
 )
