@@ -1,4 +1,6 @@
 spring:
+  config:
+    import: classpath:version.properties
   application:
     name: diet-coach
 
