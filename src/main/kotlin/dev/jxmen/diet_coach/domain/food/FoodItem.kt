@@ -12,8 +12,3 @@ data class FoodItem (
     val grams: Double,
     val nutrients: Nutrients
 )
-
-data class FoodItems(
-    val summary: String,
-    val items: List<FoodItem>
-)

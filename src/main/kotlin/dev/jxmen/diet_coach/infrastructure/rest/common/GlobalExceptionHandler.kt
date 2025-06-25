@@ -4,6 +4,7 @@ import dev.jxmen.diet_coach.common.dto.ApiResponse
 import dev.jxmen.diet_coach.common.dto.ErrorType
 import dev.jxmen.diet_coach.domain.food.exception.EmptyImageException
 import dev.jxmen.diet_coach.domain.food.exception.UnsupportedImageTypeException
+import dev.jxmen.diet_coach.infrastructure.ai.UnprocessableFoodImageException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.boot.logging.LogLevel
@@ -24,6 +25,11 @@ class GlobalExceptionHandler(
     @ExceptionHandler(UnsupportedImageTypeException::class)
     fun handleUnsupportedImageTypeException(ex: UnsupportedImageTypeException): ResponseEntity<ApiResponse<Nothing>> {
         return handleError(ErrorType.UNSUPPORTED_IMAGE_TYPE, ex)
+    }
+
+    @ExceptionHandler(UnprocessableFoodImageException::class)
+    fun handleUnprocessableFoodImageException(ex: UnprocessableFoodImageException): ResponseEntity<ApiResponse<Nothing>> {
+        return handleError(ErrorType.UNPROCESSABLE_FOOD_IMAGE, ex)
     }
 
     private fun handleError(errorType: ErrorType, ex: Exception): ResponseEntity<ApiResponse<Nothing>> {

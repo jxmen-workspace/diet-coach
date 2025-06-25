@@ -14,5 +14,12 @@ spring:
     ansi:
       enabled: always
 
+  ai:
+    openai:
+      chat:
+        options:
+          model: gpt-4o
+          temperature: 0.0
+
   profiles:
-    active: dev
+    active: local
