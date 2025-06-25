@@ -21,5 +21,6 @@ data class NutritionAnalysisResult(
      */
     val fat: Double,
 
-    val foodItems: FoodItems
+    val summary: String,
+    val foodItems: List<FoodItem>
 )

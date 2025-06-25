@@ -1,0 +1,16 @@
+spring:
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          multipart: # 파일 관련된 로깅 비허용
+            warn
+          client:
+            DefaultRestClient:
+              warn
+    root: debug

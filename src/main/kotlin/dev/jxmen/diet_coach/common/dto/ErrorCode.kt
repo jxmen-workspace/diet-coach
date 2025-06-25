@@ -7,5 +7,6 @@ enum class ErrorCode {
     // I: Image 관련 에러
     I001,
     I002,
+    I003,
 }
 
