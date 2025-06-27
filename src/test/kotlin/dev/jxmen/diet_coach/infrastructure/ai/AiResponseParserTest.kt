@@ -15,7 +15,7 @@ class AiResponseParserTest {
     fun testWithInvalidJson() {
         val str = "이미지를 분석할 수 없습니다."
 
-        assertThrows<IllegalArgumentException> { parser.parseFromFoodImage(str) }
+        assertThrows<UnprocessableFoodImageException> { parser.parseFromFoodImage(str) }
     }
 
     @Test
