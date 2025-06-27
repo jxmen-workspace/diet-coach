@@ -1,0 +1,10 @@
+services:
+  app:
+    image: "${IMAGE_NAME}" # 환경 변수로 이미지 이름을 파라미터화
+    env_file:
+      - my.secrets
+    environment:
+      JAVA_TOOL_OPTIONS: "-XX:MaxDirectMemorySize=64m -Duser.timezone=Asia/Seoul"
+    ports:
+      - "8080:8080"
+    restart: always
