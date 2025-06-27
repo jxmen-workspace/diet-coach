@@ -7,7 +7,7 @@ import org.junit.jupiter.api.assertThrows
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class AiResponseJsonParserTest {
+class AiResponseParserTest {
 
     val parser = AiResponseParser(jacksonObjectMapper())
 
