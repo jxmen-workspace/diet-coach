@@ -1,6 +1,7 @@
 package dev.jxmen.diet_coach.infrastructure.ai
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import dev.jxmen.diet_coach.domain.food.exception.UnprocessableFoodImageException
 import org.junit.jupiter.api.assertAll
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows

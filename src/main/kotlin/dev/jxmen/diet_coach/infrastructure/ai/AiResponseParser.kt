@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonParseException
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import dev.jxmen.diet_coach.domain.food.NutritionAnalysisResult
+import dev.jxmen.diet_coach.domain.food.exception.UnprocessableFoodImageException
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 
@@ -37,9 +38,8 @@ class AiResponseParser(
         return try {
             objectMapper.readValue(cleanJson, NutritionAnalysisResult::class.java)
         } catch (e: JsonParseException) {
+            // TODO: ai 응답 로깅
             throw UnprocessableFoodImageException()
         }
     }
 }
-
-class UnprocessableFoodImageException : RuntimeException("처리할 수 없는 음식 이미지입니다.")
