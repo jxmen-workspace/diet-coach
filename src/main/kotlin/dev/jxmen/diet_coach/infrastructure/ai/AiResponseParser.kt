@@ -38,7 +38,7 @@ class AiResponseParser(
         return try {
             objectMapper.readValue(cleanJson, NutritionAnalysisResult::class.java)
         } catch (e: JsonParseException) {
-            // TODO: ai 응답 로깅
+            logger.warn("JSON 파싱에 실패했습니다. 데이터: $str", e)
             throw UnprocessableFoodImageException()
         }
     }
