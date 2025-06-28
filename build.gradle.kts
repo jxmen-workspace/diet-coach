@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "dev.jxmen"
-version = "0.2.1"
+version = "0.2.2"
 
 tasks.register("writeVersion") {
     // NOTE: git에 태그 추가, API로 버전 확인 시에 사용
